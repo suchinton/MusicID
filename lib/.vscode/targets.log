@@ -1,0 +1,431 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Wed Jun 22 19:51:35 2022
+
+# Variables
+
+# environment
+define FZF_DEFAULT_OPTS
+
+    
+    --color fg:7,bg:0,hl:1,fg+:232,bg+:1,hl+:255
+    --color info:7,prompt:2,spinner:1,pointer:232,marker:1
+
+endef
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-49201a07-e1e7-4424-856f-2fd24cbb8c93.sock
+# environment
+LC_NAME = en_IN
+# environment
+LC_NUMERIC = en_IN
+# environment
+VSCODE_CWD = /home/suchinton
+# environment
+LC_ADDRESS = en_IN
+# default
+MAKE_COMMAND := make
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/suchinton/test_BEND/mnemophonix
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+MAIL = /var/spool/mail/suchinton
+# environment
+XDG_DATA_DIRS = /home/suchinton/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+# environment
+OLDPWD = /home/suchinton
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/suchinton/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# environment
+LANG = C
+# environment
+XAUTHORITY = /home/suchinton/.Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile
+CURDIR := /home/suchinton/test_BEND/mnemophonix
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = bspwm
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 2106
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+*F = $(notdir $*)
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 2
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+# default
+MAKEFILES := 
+# environment
+LC_MONETARY = en_IN
+# environment
+MOTD_SHOWN = pam
+# automatic
+^F = $(notdir $^)
+# environment
+LC_TIME = en_IN
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+LC_TELEPHONE = en_IN
+# automatic
+?F = $(notdir $?)
+# environment
+XDG_SEAT = seat0
+# environment
+LS_COLORS = :su=30;41:ow=30;42:st=30;44:
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+DESKTOP_SESSION = bspwm
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+BROWSER = firefox
+# environment
+LOGNAME = suchinton
+# environment
+XDG_VTNR = 7
+# makefile
+.DEFAULT_GOAL := all
+# environment
+EDITOR = nano
+# environment
+DISPLAY = :0
+# environment
+GTK_MODULES = canberra-gtk-module
+# environment
+USER = suchinton
+# default
+MAKE_VERSION := 4.3
+# environment
+LC_MEASUREMENT = en_IN
+# environment
+_ = /usr/bin/make
+# environment
+LC_PAPER = en_IN
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/suchinton
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-93ecb181-1.68.1-main.sock
+# environment
+XDG_SESSION_ID = 2
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/suchinton
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
+# makefile (from 'Makefile', line 3)
+SOURCES = wav.c fingerprinting.c fft.c logbins.c spectralimages.c haar.c rawfingerprints.c minhash.c permutations.c fingerprintio.c resample.c audionormalizer.c hannwindow.c search.c ffmpeg.c lsh.c
+# environment
+GDMSESSION = bspwm
+# environment
+LC_IDENTIFICATION = en_IN
+# variable set hash-table stats:
+# Load=100/1024=10%, Rehash=0, Collisions=5/131=4%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 38, inode 473536): 43 files, no impossibilities.
+
+# 43 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+fft.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.748332
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+spectralimages.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.751666
+#  File has been updated.
+#  Successfully updated.
+
+musicID: main.c libmusicID.so
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-22 19:47:48.713041457
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 7):
+	$(CC) -L. main.c -lmusicID -lm -Wl,-rpath,. -o musicID -Wall -Wextra -pedantic
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-22 19:45:19.713034657
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+fingerprinting.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.748332
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+rawfingerprints.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.751666
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+generatepermutations.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.748332
+#  File has been updated.
+#  Successfully updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 16):
+	rm -f musicID libmusicID.so
+
+# Not a target:
+permutations.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.751666
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+hannwindow.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.748332
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lsh.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.748332
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+resample.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.751666
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+wav.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.751666
+#  File has been updated.
+#  Successfully updated.
+
+genperm: generatepermutations.c
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-22 19:47:48.799708126
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 13):
+	$(CC) generatepermutations.c -o genperm -Wall -Wextra -pedantic
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: libmusicID.so musicID genperm
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+minhash.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.751666
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+haar.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.748332
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+audionormalizer.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-22 17:39:18.452036
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-22 19:47:33.829707426
+#  File has been updated.
+#  Successfully updated.
+
+libmusicID.so: wav.c fingerprinting.c fft.c logbins.c spectralimages.c haar.c rawfingerprints.c minhash.c permutations.c fingerprintio.c resample.c audionormalizer.c hannwindow.c search.c ffmpeg.c lsh.c
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-22 19:47:48.599708118
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 10):
+	$(CC) -fPIC $(SOURCES) -lpthread -shared -o libmusicID.so -Wall -Wextra -pedantic
+
+# Not a target:
+search.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.751666
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+fingerprintio.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.748332
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+logbins.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 19:36:13.748332
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+ffmpeg.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-22 19:47:36.329707541
+#  File has been updated.
+#  Successfully updated.
+
+# files hash-table stats:
+# Load=26/1024=3%, Rehash=0, Collisions=0/62=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 49 / storage = 538 B / avg = 10 B
+# current buf: size = 8162 B / used = 538 B / count = 49 / avg = 10 B
+
+# strcache performance: lookups = 84 / hit rate = 41%
+# hash-table stats:
+# Load=49/8192=1%, Rehash=0, Collisions=0/84=0%
+# Finished Make data base on Wed Jun 22 19:51:35 2022
+
+ 

@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 
         fprintf(stderr, "\n");
         fprintf(stderr, " ---                                                       ---\n");
-        fprintf(stderr, " \\  \\  mnemophonix - A simple audio fingerprinting system  \\  \\\n");
+        fprintf(stderr, " \\  \\  musicID - A simple audio fingerprinting system  \\  \\\n");
         fprintf(stderr, " O  O                                                      O  O\n");
         fprintf(stderr, "\n");
         fprintf(stderr, "Usage:\n");

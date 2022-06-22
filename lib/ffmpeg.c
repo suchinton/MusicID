@@ -33,9 +33,9 @@ static void parse_metadata(char* metadata, char* *artist, char* *track_title, ch
 
 
 char* generate_wave_file(char* input, char* *artist, char* *track_title, char* *album_title) {
-    char wav[] = "tmp-mnemophonix-wav-XXXXXX";
+    char wav[] = "tmp-musicID-wav-XXXXXX";
     mktemp(wav);
-    char metadata[] = "tmp-mnemophonix-metadata-XXXXXX";
+    char metadata[] = "tmp-musicID-metadata-XXXXXX";
     mktemp(metadata);
 
     *artist = NULL;

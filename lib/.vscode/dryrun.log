@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/suchinton/test_BEND/mnemophonix'
+cc -fPIC wav.c fingerprinting.c fft.c logbins.c spectralimages.c haar.c rawfingerprints.c minhash.c permutations.c fingerprintio.c resample.c audionormalizer.c hannwindow.c search.c ffmpeg.c lsh.c -lpthread -shared -o libmusicID.so -Wall -Wextra -pedantic
+cc -L. main.c -lmusicID -lm -Wl,-rpath,. -o musicID -Wall -Wextra -pedantic
+cc generatepermutations.c -o genperm -Wall -Wextra -pedantic
+make: Leaving directory '/home/suchinton/test_BEND/mnemophonix'
+ 
