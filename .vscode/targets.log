@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun 22 18:01:41 2022
+# Make data base, printed on Sat Jun 25 12:14:42 2022
 
 # Variables
 
@@ -25,7 +27,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-da795f03-c7d2-4a6e-b834-f2dbb7f30a7d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-0da993be-1379-42e6-bcd3-8872d3492190.sock
 # environment
 LC_NAME = en_IN
 # environment
@@ -97,7 +99,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 2263
+VSCODE_PID = 3317
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -163,8 +165,6 @@ BROWSER = firefox
 # environment
 LOGNAME = suchinton
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/visual-studio-code.desktop
-# environment
 XDG_VTNR = 7
 # makefile
 .DEFAULT_GOAL := 
@@ -180,8 +180,6 @@ USER = suchinton
 MAKE_VERSION := 4.3
 # environment
 LC_MEASUREMENT = en_IN
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6400
 # environment
 _ = /usr/bin/make
 # environment
@@ -219,7 +217,7 @@ GDMSESSION = bspwm
 # environment
 LC_IDENTIFICATION = en_IN
 # variable set hash-table stats:
-# Load=101/1024=10%, Rehash=0, Collisions=5/128=4%
+# Load=99/1024=10%, Rehash=0, Collisions=5/126=4%
 
 # Pattern-specific Variable Values
 
@@ -227,9 +225,9 @@ LC_IDENTIFICATION = en_IN
 
 # Directories
 
-# . (device 37, inode 362808): 8 files, no impossibilities.
+# . (device 37, inode 362808): 9 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -279,14 +277,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 146 B / avg = 9 B
-# current buf: size = 8162 B / used = 146 B / count = 16 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 160 B / avg = 9 B
+# current buf: size = 8162 B / used = 160 B / count = 17 / avg = 9 B
 
-# strcache performance: lookups = 19 / hit rate = 15%
+# strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
-# Load=16/8192=0%, Rehash=0, Collisions=0/19=0%
-# Finished Make data base on Wed Jun 22 18:01:41 2022
+# Load=17/8192=0%, Rehash=0, Collisions=0/20=0%
+# Finished Make data base on Sat Jun 25 12:14:42 2022
 
  
-make: *** No rule to make target 'all'.  Stop.
-
