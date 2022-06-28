@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>394</width>
-    <height>323</height>
+    <width>478</width>
+    <height>380</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,8 +15,38 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" colspan="2" alignment="Qt::AlignHCenter">
+    <item row="4" column="0">
+     <widget class="QLabel" name="Album_L">
+      <property name="text">
+       <string>Album :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="Track_L">
+      <property name="text">
+       <string>Track   :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="Artist_L">
+      <property name="text">
+       <string>Artist   :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="3" alignment="Qt::AlignHCenter">
      <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <family>JetBrainsMono Nerd Font Mono</family>
+        <pointsize>14</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">font: 75 14pt &quot;JetBrainsMono Nerd Font Mono&quot;;</string>
       </property>
@@ -25,7 +55,7 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="1" column="0" colspan="3">
      <widget class="QTextEdit" name="Display">
       <property name="readOnly">
        <bool>true</bool>
@@ -39,7 +69,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>394</width>
+     <width>478</width>
      <height>24</height>
     </rect>
    </property>
