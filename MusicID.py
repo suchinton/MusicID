@@ -1,26 +1,15 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit, QPushButton,QToolButton, QFileDialog, QTextEdit, QLabel
+from distutils import text_file
+from multiprocessing.connection import wait
+from time import sleep
+from tokenize import String
+from unittest import result
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit,\
+     QPushButton,QToolButton, QFileDialog, QTextEdit, QTabWidget, QPlainTextEdit
 from PyQt5 import uic
-from PyQt5.QtGui import QImage, QPixmap
 import sys
 import os
 import Recorder
 from threading import *
-import requests
-
-class ResultWindow(QMainWindow):
-    def __init__(self):
-        super(ResultWindow,self).__init__()
-
-        # Load App
-        uic.loadUi("Result.ui",self)
-
-        # Define Widgets
-        self.Display = self.findChild(QTextEdit,"Display")
-        self.Art = self.findChild(QLabel,"Art")
-        #self.Artist_L = self.findChild(QLabel,"Artist_L")        
-        #self.Track_L = self.findChild(QLabel,"Track_L")
-        #self.Album_L = self.findChild(QLabel,"Album_L")
-
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -28,30 +17,55 @@ class MainWindow(QMainWindow):
 
         # Load App
         uic.loadUi("MusicID_MW.ui",self)
-        
+
+        # Define Tab to navigat
+        self.Tabs = self.findChild(QTabWidget,"Tabs")
+                
         # Define Widgets
-        self.Directory = self.findChild(QLineEdit,"Directory")
-        self.Submit = self.findChild(QPushButton, "SubmitButton")
-        self.toolbutton = self.findChild(QToolButton,"FilePicker")
+
+        ## for main tab
         self.Listen = self.findChild(QPushButton, "ListenButton")
 
+        self.Directory = self.findChild(QLineEdit,"Directory")
+        self.toolbutton = self.findChild(QToolButton,"FilePicker") ## Picks dir. 
+        self.Submit = self.findChild(QPushButton, "SubmitButton")
+        
+        ## for result tab
+
+        self.Status = self.findChild(QPlainTextEdit,"Status")
+        self.Artist = self.findChild(QLineEdit,"Artist")
+        self.Track = self.findChild(QLineEdit,"Track")
+        self.Album = self.findChild(QLineEdit,"Album")
+
         # Actions to events
+        self.Listen.clicked.connect(self.T_SearchDB)
+
         self.toolbutton.clicked.connect(self.PickDir)
         self.Submit.clicked.connect(self.T_Index_refresh)
-        self.Listen.clicked.connect(self.T_SearchDB)
 
         # Show App
         self.show()
     
-    ## Thread Fns to keep GUI responsive
+    # Thread Fns to keep GUI responsive
+    def T_Search(self):
+        #self.T_SearchDB()
+        self.t0 = Thread(target = self.T_SearchDB)
+        self.t0.start() 
+        
+    
+    def Show_results(self):
+        self.text_file = open("Status.txt", "r")
+        self.result = self.text_file.read()
+        self.Display.setText(self.result)
+        self.text_file.close()
+
     def T_SearchDB(self):
-        self.t = Thread(target = self.SearchDB)
-        self.t.start()
-        self.t.join()
+        self.t1 = Thread(target = self.SearchDB)
+        self.t1.start()
 
     def T_Index_refresh(self):
-        t = Thread(target=self.Index_refresh)
-        t.start()
+        self.t3 = Thread(target=self.Index_refresh)
+        self.t3.start()
 
     def PickDir(self):
         folderpath = QFileDialog.getExistingDirectory(self, 'Select Folder')
@@ -64,46 +78,39 @@ class MainWindow(QMainWindow):
                 os.system(f"cd lib && ./musicID index {os.path.join(root,name)} >> db")
         os.system("cd lib && cat db | grep /")
 
-    def SearchDB(self):
+    def SearchDB(self):  
         self.Listen.setEnabled(False)
         self.Listen.setText("Listening... ﳃ")
         Recorder.rec()
         self.Listen.setText("Searching... ")
         os.system("cd lib && ./musicID search ../output.wav db > ~/MusicID/Status.txt")
-
-        text_file = open("Status.txt", "r")
-        result = text_file.read()
-
-        print(result)
-        
-        self.show_result = ResultWindow()
-
-        self.show_result.Display.setText(result)
-
-
-        #self.url_img = 'https://i.scdn.co/image/ab67616d0000b273c8a11e48c91a982d086afc69'
-
-        #self.image = QImage()
-        #self.image.loadFromData(requests.get(self.url_img).content)
-        #self.show_result.Art.setPixmap(QPixmap(self.image))
-         
-        #self.artist = os.system("cat Status.txt | grep artist")
-        #self.show_result.Artist_L.setText(self.artist)
-#
-        #self.track = os.system("cat Status.txt | grep Track")
-        #self.show_result.Track_L.setText(self.track)
-#
-        #self.album = os.system("cat Status.txt | grep Album")
-        #self.show_result.Album_L.setText(self.album)
-#
-        self.show_result.show()
-
-        text_file.close()
-        os.remove("output.wav")
-        os.remove("Status.txt")
-        
         self.Listen.setText("Listen... ")
         self.Listen.setEnabled(True)
+
+        self.Tabs.setCurrentIndex(1)
+        
+        self.text_file = open("Status.txt", "r")
+
+        self.info = self.text_file.read()
+        self.Status.setPlaceholderText(self.info)
+
+        result = self.text_file.readlines()
+        M_resut = []
+
+        for line in result:
+            M_resut.append(line.strip())
+
+        print(M_resut)
+
+        #Ar = ''.join(result[8])
+        #Tr = ''.join(result[9])
+        #Al = ''.join(result[10])
+        #self.Artist.setText(Ar)
+        #self.Track.setText(
+        #self.Album.setText(Al)
+        
+        #self.Display.setText(self.result)
+        self.text_file.close()
 
 # init the app
 

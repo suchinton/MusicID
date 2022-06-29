@@ -1,11 +1,8 @@
 Loading database db...
-(raw database loading took 1474 ms)
-(lsh index building took 365 ms)
+(raw database loading took 1940 ms)
+(lsh index building took 530 ms)
 Searching...
-(Search took 28 ms)
+(Search took 35 ms)
 
-Found match: '/home/suchinton/Music/AdamLambert-NewEyes.mp3'
-Artist: Adam Lambert
-Track title: New Eyes
-Album title: New Eyes
+No match found
 
