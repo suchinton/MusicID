@@ -1,2 +1,5 @@
 
 output.wav
+SPT_C.py
+.cache
+*.pyc

@@ -1,0 +1,11 @@
+Loading database db...
+(raw database loading took 1236 ms)
+(lsh index building took 310 ms)
+Searching...
+(Search took 39 ms)
+
+Found match: '/home/suchinton/Music/ArcticMonkeys-DoIWannaKnow.mp3'
+Artist: Arctic Monkeys
+Track title: Do I Wanna Know?
+Album title: AM
+
