@@ -1,8 +1,0 @@
-Loading database db...
-(raw database loading took 1940 ms)
-(lsh index building took 530 ms)
-Searching...
-(Search took 35 ms)
-
-No match found
-
