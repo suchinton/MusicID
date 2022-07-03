@@ -2,7 +2,7 @@ import subprocess
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit,\
      QPushButton,QToolButton, QFileDialog, QLabel, QTabWidget, \
      QPlainTextEdit,QTableWidget, QProgressBar
-from PyQt5.QtCore import QUrl
+from PyQt5.QtCore import *
 from PyQt5 import QtWidgets 
 from PyQt5 import uic
 import sys
@@ -10,6 +10,7 @@ import os
 import Recorder
 from threading import *
 from PyQt5.QtWebEngineWidgets import QWebEngineView
+import time
 
 from spotiFind import Spoti_Find
 
@@ -53,7 +54,7 @@ class MainWindow(QMainWindow):
         self.spotBrowser = self.findChild(QWebEngineView, "spotBrowser")
 
         # Actions to events
-        self.Listen.clicked.connect(self.SearchDB)
+        self.Listen.clicked.connect(self.T_SearchDB)
 
         self.FilePicker.clicked.connect(self.PickFile)
         self.DirPicker.clicked.connect(self.PickDir)
@@ -69,12 +70,13 @@ class MainWindow(QMainWindow):
     # Thread Fns to keep GUI responsive
 
     def T_SearchDB(self):
-        self.t1 = Thread(target = self.SearchDB)
+        self.t1 = SearchClass()
         self.t1.start()
+        self.t1.finished.connect(self.SearchDB)
 
     def T_Index_refresh(self):
-        self.t3 = Thread(target=self.Index_refresh)
-        self.t3.start()
+        self.t2 = Thread(target=self.Index_refresh)
+        self.t2.start()
 
     def PickFile(self):
         try:
@@ -131,10 +133,8 @@ class MainWindow(QMainWindow):
 
     def SearchDB(self):  
         self.Listen.setEnabled(False)
-        self.Listen.setText("Listening... ﳃ")
-        Recorder.rec()
         self.Listen.setText("Searching... ")
-        os.system("cd lib && ./musicID search ../output.wav db > ~/MusicID/Status.txt")
+        time.sleep(2)
         self.Listen.setText("Listen... ")
         self.Listen.setEnabled(True)
 
@@ -161,6 +161,10 @@ class MainWindow(QMainWindow):
                 self.spotBrowser.load(url)
                 self.Tabs.setCurrentIndex(3)
 
+class SearchClass(QThread):
+    def run(self):
+        Recorder.rec()
+        os.system("cd lib && ./musicID search ../output.wav db > ~/MusicID/Status.txt")
 # init the app
 
 app = QApplication(sys.argv)

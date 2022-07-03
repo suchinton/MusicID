@@ -1,8 +1,8 @@
 Loading database db...
-(raw database loading took 23895 ms)
-(lsh index building took 8276 ms)
+(raw database loading took 20682 ms)
+(lsh index building took 5936 ms)
 Searching...
-(Search took 441 ms)
+(Search took 471 ms)
 
 Found match: '/home/suchinton/Music/M3/MISSIO-Dizzy.mp3'
 Artist: MISSIO
