@@ -1,11 +1,11 @@
 Loading database db...
-(raw database loading took 20407 ms)
-(lsh index building took 6552 ms)
+(raw database loading took 22529 ms)
+(lsh index building took 7280 ms)
 Searching...
-(Search took 709 ms)
+(Search took 478 ms)
 
-Found match: '/home/suchinton/Music/M2/GeorgeEzra-Budapest.mp3'
-Artist: George Ezra
-Track title: Budapest
-Album title: Wanted on Voyage
+Found match: '/home/suchinton/Music/M2/DollyParton-9to5.mp3'
+Artist: Dolly Parton
+Track title: 9 to 5
+Album title: 9 To 5 And Odd Jobs
 

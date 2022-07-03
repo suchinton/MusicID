@@ -134,7 +134,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -376,6 +376,26 @@
         </layout>
        </widget>
       </widget>
+      <widget class="QWidget" name="SpotB">
+       <attribute name="title">
+        <string>Spotify</string>
+       </attribute>
+       <widget class="QWebEngineView" name="spotBrowser">
+        <property name="geometry">
+         <rect>
+          <x>-1</x>
+          <y>-1</y>
+          <width>641</width>
+          <height>361</height>
+         </rect>
+        </property>
+        <property name="url">
+         <url>
+          <string>https://www.spotify.com/in-en/</string>
+         </url>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -423,6 +443,13 @@
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

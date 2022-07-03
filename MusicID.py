@@ -1,12 +1,15 @@
 import subprocess
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit,\
-     QPushButton,QToolButton, QFileDialog, QLabel, QTabWidget, QPlainTextEdit,QTableWidget, QProgressBar
+     QPushButton,QToolButton, QFileDialog, QLabel, QTabWidget, \
+     QPlainTextEdit,QTableWidget, QProgressBar
 from PyQt5 import QtWidgets 
 from PyQt5 import uic
 import sys
 import os
 import Recorder
 from threading import *
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtWebEngineWidgets import *
 import webbrowser
 
 from spotiFind import Spoti_Find
@@ -46,6 +49,9 @@ class MainWindow(QMainWindow):
 
         ## for Recommendation tab
         self.Recommend = self.findChild(QTableWidget,"Recommend")
+
+        ## for Spotify tab
+        self.spotBrowser = self.findChild(QWebEngineView, "spotBrowser")
 
         # Actions to events
         self.Listen.clicked.connect(self.T_SearchDB)
@@ -120,6 +126,10 @@ class MainWindow(QMainWindow):
             self.Recommend.setItem(row, 3, QtWidgets.QTableWidgetItem(str(self.track_result[i]["Link"])))
             row += 1
 
+    def openSpotify(self, link):
+        self.spotBrowser.setUrl(self.value)
+
+
 
     def SearchDB(self):  
         self.Listen.setEnabled(False)
@@ -146,9 +156,10 @@ class MainWindow(QMainWindow):
     
     def OpenLink(self):
         for index in self.Recommend.selectionModel().selectedIndexes():
-            value = str(self.Recommend.item(self.Recommend.currentRow(), self.Recommend.currentColumn()).text())
-            if value.startswith("http://") or value.startswith("https://"):
-                webbrowser.open(value)
+            self.value = str(self.Recommend.item(self.Recommend.currentRow(), self.Recommend.currentColumn()).text())
+            if self.value.startswith("http://") or self.value.startswith("https://"):
+                self.openSpotify()
+                webbrowser.open(self.value)
 
 # init the app
 
