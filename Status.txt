@@ -1,11 +1,11 @@
 Loading database db...
-(raw database loading took 21545 ms)
-(lsh index building took 7315 ms)
+(raw database loading took 20407 ms)
+(lsh index building took 6552 ms)
 Searching...
-(Search took 581 ms)
+(Search took 709 ms)
 
-Found match: '/home/suchinton/Music/M4/Survivor-EyeoftheTiger.mp3'
-Artist: Survivor
-Track title: Eye of the Tiger
-Album title: Rocky IV
+Found match: '/home/suchinton/Music/M2/GeorgeEzra-Budapest.mp3'
+Artist: George Ezra
+Track title: Budapest
+Album title: Wanted on Voyage
 
