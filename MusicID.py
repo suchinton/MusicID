@@ -96,7 +96,7 @@ class MainWindow(QMainWindow):
             n = int(subprocess.getoutput(f"ls {str(self.Path.text())} | wc -l"))
             self.progressBar.setMaximum(n)
             self.progressBar.setValue(0)
-            os.system("cd lib && rm db")
+            #os.system("cd lib && rm db")
             for root, dirs, files in os.walk(self.Path.text()):
                 for name in files:
                     self.progressBar.setValue(self.progressBar.value()+1)

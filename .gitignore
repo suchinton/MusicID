@@ -3,3 +3,6 @@ output.wav
 SPT_C.py
 .cache
 *.pyc
+Status.txt
+backup/db
+lib/db
