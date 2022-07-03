@@ -2,6 +2,7 @@ import subprocess
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit,\
      QPushButton,QToolButton, QFileDialog, QLabel, QTabWidget, \
      QPlainTextEdit,QTableWidget, QProgressBar
+from PyQt5.QtCore import QUrl
 from PyQt5 import QtWidgets 
 from PyQt5 import uic
 import sys
@@ -9,8 +10,6 @@ import os
 import Recorder
 from threading import *
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-from PyQt5.QtWebEngineWidgets import *
-import webbrowser
 
 from spotiFind import Spoti_Find
 
@@ -54,7 +53,7 @@ class MainWindow(QMainWindow):
         self.spotBrowser = self.findChild(QWebEngineView, "spotBrowser")
 
         # Actions to events
-        self.Listen.clicked.connect(self.T_SearchDB)
+        self.Listen.clicked.connect(self.SearchDB)
 
         self.FilePicker.clicked.connect(self.PickFile)
         self.DirPicker.clicked.connect(self.PickDir)
@@ -125,11 +124,10 @@ class MainWindow(QMainWindow):
             self.Recommend.setItem(row, 2, QtWidgets.QTableWidgetItem(str(self.track_result[i]["Track"])))
             self.Recommend.setItem(row, 3, QtWidgets.QTableWidgetItem(str(self.track_result[i]["Link"])))
             row += 1
-
-    def openSpotify(self, link):
-        self.spotBrowser.setUrl(self.value)
-
-
+            
+    def openSpotify(self):
+        url = QUrl.fromUserInput(self.value)
+        self.spotBrowser.load(url)
 
     def SearchDB(self):  
         self.Listen.setEnabled(False)
@@ -158,11 +156,14 @@ class MainWindow(QMainWindow):
         for index in self.Recommend.selectionModel().selectedIndexes():
             self.value = str(self.Recommend.item(self.Recommend.currentRow(), self.Recommend.currentColumn()).text())
             if self.value.startswith("http://") or self.value.startswith("https://"):
-                self.openSpotify()
-                webbrowser.open(self.value)
+                #self.T_openSpotify()
+                url = QUrl.fromUserInput(self.value)
+                self.spotBrowser.load(url)
+                self.Tabs.setCurrentIndex(3)
 
 # init the app
 
 app = QApplication(sys.argv)
 Main_pg = MainWindow()
-app.exec_()
+sys.exit(app.exec())
+#app.exec_()
