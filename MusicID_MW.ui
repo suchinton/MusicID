@@ -12,13 +12,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>450</width>
+    <width>750</width>
     <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>750</width>
+    <width>1050</width>
     <height>500</height>
    </size>
   </property>
@@ -71,7 +71,7 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QToolButton" name="toolButton">
+     <widget class="QToolButton" name="SideBarButton">
       <property name="toolTip">
        <string>Show Songs in Data-Base</string>
       </property>
@@ -417,6 +417,44 @@
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="maximumSize">
+    <size>
+     <width>290</width>
+     <height>524287</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>9</y>
+       <width>261</width>
+       <height>421</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item alignment="Qt::AlignLeft">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Songs in Data-Base</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="SongsList"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
