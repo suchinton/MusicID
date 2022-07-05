@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit,\
 from PyQt5.QtCore import *
 from PyQt5 import QtWidgets 
 from PyQt5 import uic
+from PyQt5.QtGui import QPixmap
 import sys
 import os
 import Recorder
@@ -39,6 +40,7 @@ class MainWindow(QMainWindow):
         
         ## for result tab
 
+        self.Album_Art = self.findChild(QLabel,"Album_Art")
         self.Status = self.findChild(QPlainTextEdit,"Status")
         self.Artist = self.findChild(QLabel,"Artist")
         self.Track = self.findChild(QLabel,"Track")
@@ -132,7 +134,7 @@ class MainWindow(QMainWindow):
 
     def SearchDB_1(self):           ## step 1 in searching db- record output.wav
         self.Listen.setEnabled(False)
-        self.Listen.setText("Listening... ﳃ")
+        self.Listen.setText("Listening...")
         self.T_RecClass()
 
     def T_RecClass(self):           ## QThread recording starts
@@ -141,7 +143,7 @@ class MainWindow(QMainWindow):
         self.t0.finished.connect(self.SearchDB_2)        ## after QThread process is finished we move on to SearchDB_2
 
     def SearchDB_2(self):                               ## step 2 in calling QThread for Searching
-        self.Listen.setText("Searching... ")
+        self.Listen.setText("Searching...")
         self.T_SearchDB()
 
     def T_SearchDB(self):               ## QThread starts Searching 
@@ -150,28 +152,43 @@ class MainWindow(QMainWindow):
         self.t1.finished.connect(self.SearchDB_3)
 
     def SearchDB_3(self):                    ## step 3 in calling QThread for Searching
-        self.Listen.setText("Listen... ")
+        self.Listen.setText("Listen")
         self.Listen.setEnabled(True)
 
         self.Tabs.setCurrentIndex(1)
         
         try:
             self.text_file = open("Status.txt", "r")
-            if 'No match found' in self.text_file.read():
-                QMessageBox.warning(self,"No Match","No Match was found for the Track, please try again or add song to databse")
-                
             self.info = self.text_file.read()
+
+            if 'No match found' in self.info:
+                QMessageBox.warning(self,"No Match","No Match was found for the Track, please try again or add song to databse")
+
+            #print(str(subprocess.getoutput("cat Status.txt  | grep /")).replace('Found match: ',''))
+
+            self.path = str(subprocess.getoutput("cat Status.txt  | grep $HOME ")).replace('Found match: ','').replace("'","")
+            print("1)" + self.path)
+            if os.path.exists(self.path):
+                print("2)" + self.path)
+                os.system(f"ffmpeg -i '{self.path}' Cover.png")
+                self.img = QPixmap("Cover.png")
+                self.Album_Art.setPixmap(self.img)
+            else:
+                self.img = QPixmap("Default.png")
+                self.Album_Art.setPixmap(self.img)
+
             self.Status.setPlaceholderText(self.info)
             self.Artist.setText(subprocess.getoutput("cat Status.txt | grep Artist"))
             self.Track.setText(subprocess.getoutput("cat Status.txt | grep Track"))
             self.Album.setText(subprocess.getoutput("cat Status.txt | grep Album"))
 
             self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
-            self.updateRecomendations()
             self.text_file.close()
-            
             os.system("rm Status.txt")
             os.system("rm output.wav")
+            os.system("rm Cover.png")
+            os.system("rm db")
+            self.updateRecomendations()
         except:
             FileNotFoundError
     
@@ -197,7 +214,6 @@ class MainWindow(QMainWindow):
         for index in self.Recommend.selectionModel().selectedIndexes():
             self.value = str(self.Recommend.item(self.Recommend.currentRow(), self.Recommend.currentColumn()).text())
             if self.value.startswith("http://") or self.value.startswith("https://"):
-                #self.T_openSpotify()
                 url = QUrl.fromUserInput(self.value)
                 self.spotBrowser.load(url)
                 self.Tabs.setCurrentIndex(3)
@@ -207,7 +223,6 @@ class MainWindow(QMainWindow):
         self.spotBrowser.load(url)
 
     def T_UpdateList(self):
-        #self.UpdateList.toggleViewAction()
         t3 = Thread(target=self.UpdateList)
         t3.start()
 

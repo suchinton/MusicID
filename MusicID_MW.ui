@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>500</height>
+    <width>805</width>
+    <height>565</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,7 +19,7 @@
   <property name="maximumSize">
    <size>
     <width>1050</width>
-    <height>500</height>
+    <height>700</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -176,8 +176,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>701</width>
-          <height>341</height>
+          <width>751</width>
+          <height>401</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
@@ -321,42 +321,18 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>0</y>
-          <width>681</width>
-          <height>341</height>
+          <y>10</y>
+          <width>741</width>
+          <height>371</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="5" column="1" colspan="2">
-          <widget class="QLabel" name="Album">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1" colspan="2">
-          <widget class="QLabel" name="Track">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1" colspan="2">
-          <widget class="QLabel" name="Artist">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0" rowspan="6">
+         <item row="1" column="2">
           <widget class="QPlainTextEdit" name="Status">
            <property name="maximumSize">
             <size>
-             <width>300</width>
-             <height>300</height>
+             <width>2220</width>
+             <height>200</height>
             </size>
            </property>
            <property name="acceptDrops">
@@ -374,8 +350,71 @@
            <property name="frameShadow">
             <enum>QFrame::Sunken</enum>
            </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustToContents</enum>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
+           </property>
+           <property name="overwriteMode">
+            <bool>false</bool>
+           </property>
+           <property name="backgroundVisible">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="Album_Art">
+           <property name="maximumSize">
+            <size>
+             <width>200</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Panel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Sunken</enum>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::AutoText</enum>
+           </property>
+           <property name="pixmap">
+            <pixmap>Default.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+           <property name="margin">
+            <number>5</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0" colspan="3">
+          <widget class="QLabel" name="Album">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="3">
+          <widget class="QLabel" name="Artist">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
@@ -398,6 +437,32 @@
            </property>
           </widget>
          </item>
+         <item row="4" column="0" colspan="3">
+          <widget class="QLabel" name="Track">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0" colspan="3">
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Preferred</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
         </layout>
        </widget>
       </widget>
@@ -414,8 +479,8 @@
          <rect>
           <x>-1</x>
           <y>-1</y>
-          <width>731</width>
-          <height>371</height>
+          <width>761</width>
+          <height>411</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
@@ -466,32 +531,44 @@
        <attribute name="title">
         <string>Spotify</string>
        </attribute>
-       <widget class="QWebEngineView" name="spotBrowser">
+       <widget class="QWidget" name="verticalLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>-1</x>
-          <y>-1</y>
-          <width>711</width>
-          <height>361</height>
+          <x>-10</x>
+          <y>0</y>
+          <width>821</width>
+          <height>401</height>
          </rect>
         </property>
-        <property name="acceptDrops">
-         <bool>false</bool>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="url">
-         <url>
-          <string>https://www.spotify.com/in-en/</string>
-         </url>
-        </property>
-        <property name="zoomFactor">
-         <double>1.000000000000000</double>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QWebEngineView" name="spotBrowser">
+           <property name="minimumSize">
+            <size>
+             <width>550</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="url">
+            <url>
+             <string>https://www.spotify.com/in-en/</string>
+            </url>
+           </property>
+           <property name="zoomFactor">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
      </widget>
@@ -503,8 +580,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>750</width>
-     <height>30</height>
+     <width>805</width>
+     <height>27</height>
     </rect>
    </property>
   </widget>
