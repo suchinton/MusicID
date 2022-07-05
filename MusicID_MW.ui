@@ -247,6 +247,15 @@
            <property name="value">
             <number>24</number>
            </property>
+           <property name="textVisible">
+            <bool>true</bool>
+           </property>
+           <property name="invertedAppearance">
+            <bool>false</bool>
+           </property>
+           <property name="format">
+            <string>%p%</string>
+           </property>
           </widget>
          </item>
          <item row="4" column="0" colspan="3">

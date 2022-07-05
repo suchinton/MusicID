@@ -1,7 +1,7 @@
 import subprocess
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit,\
      QPushButton,QToolButton, QFileDialog, QLabel, QTabWidget, \
-     QPlainTextEdit,QTableWidget, QProgressBar, QListWidget,QDockWidget
+     QPlainTextEdit,QTableWidget, QProgressBar, QListWidget,QDockWidget, QMessageBox
 from PyQt5.QtCore import *
 from PyQt5 import QtWidgets 
 from PyQt5 import uic
@@ -61,7 +61,7 @@ class MainWindow(QMainWindow):
         self.FilePicker.clicked.connect(self.PickFile)
         self.DirPicker.clicked.connect(self.PickDir)
         self.Search_by_T_B.clicked.connect(self.FindTrack)
-        self.Submit.clicked.connect(self.T_Index_refresh)
+        self.Submit.clicked.connect(self.Index_refresh)
         self.Recommend.doubleClicked.connect(self.OpenLink)
         self.SideBarButton.clicked.connect(self.dockWidget.show)
         self.T_UpdateList()
@@ -72,10 +72,6 @@ class MainWindow(QMainWindow):
         self.show()
     
     # Thread Fns to keep GUI responsive
-
-    def T_Index_refresh(self):
-        self.t2 = Thread(target=self.Index_refresh)
-        self.t2.start()
 
     def PickFile(self):
         try:
@@ -93,27 +89,41 @@ class MainWindow(QMainWindow):
 
     def Index_refresh(self):
         if str(self.Path.text()).endswith(('.mp3','.m4a','.wav')):
-            self.Message.show()
-            os.system(f"cd lib && ./musicID index {str(self.Path.text())} >> db")
-            self.Message.hide()
+            try:
+                self.Message.show()
+                os.system(f"cd lib && ./musicID index {self.Path.text()} >> db")
+                self.T_UpdateList()
+                self.Message.hide()
+                QMessageBox.information(self,"Done",f"Track has been added to DB")
+            except:
+                print("Error!! couldn't Hash given file")
+
         elif str(self.Path.text()).startswith("/"):
             self.Message.show()
             self.progressBar.show()
-            #n = int(subprocess.getoutput(f"ls {str(self.Path.text())} | wc -l"))
-            n = 0
-            for root, dirs, files in os.walk(self.Path.text()):
-                for name in files:
-                    n += 1
-            self.progressBar.setMaximum(n)
-            self.progressBar.setValue(0)
-            #os.system("cd lib && rm db")
-            for root, dirs, files in os.walk(self.Path.text()):
-                for name in files:
-                    self.progressBar.setValue(self.progressBar.value()+1)
-                    os.system(f"cd lib && ./musicID index {os.path.join(root,name)} >> db")
-            self.Message.hide()
-            self.progressBar.hide()
-            os.system("cd lib && cat db | grep /")
+            self.set_ProgressBarMax()
+            self.DI = Dir_Index(self.Path.text())
+            self.DI.start()
+            self.DI.update_progress.connect(self.update_progressBar)
+            self.DI.finished.connect(self.Dir_Indexed)
+    
+    def set_ProgressBarMax(self):
+        self.Size = 0
+        for root, dirs, files in os.walk(str(self.Path.text())):
+            for name in files:
+                self.Size += 1
+        print(self.Size)
+        self.progressBar.setMaximum(self.Size)
+
+    def update_progressBar(self, i):
+        self.i = i
+        self.progressBar.setValue(self.i)
+
+    def Dir_Indexed(self):
+        self.T_UpdateList()
+        self.Message.hide()
+        self.progressBar.hide()
+        QMessageBox.information(self,"Done",f"All files have been added to DB")
 
     def SearchDB_1(self):           ## step 1 in searching db- record output.wav
         self.Listen.setEnabled(False)
@@ -142,7 +152,9 @@ class MainWindow(QMainWindow):
         
         try:
             self.text_file = open("Status.txt", "r")
-
+            if 'No match found' in self.text_file.read():
+                QMessageBox.warning(self,"No Match","No Match was found for the Track, please try again or add song to databse")
+                
             self.info = self.text_file.read()
             self.Status.setPlaceholderText(self.info)
             self.Artist.setText(subprocess.getoutput("cat Status.txt | grep Artist"))
@@ -199,20 +211,41 @@ class MainWindow(QMainWindow):
         Database = open('./lib/db', 'r')
 
         home = str(subprocess.getoutput("echo $HOME"))
-        print(home)
-
         L = []
 
         for line in Database:
             if home in line:
                 L.append(line.replace(subprocess.getoutput("echo $HOME/"),"~/"))
 
-        for i in range(len(L)):
-            print(L[i])
-
         self.SongsList.addItems(L)
         Database.close()
         sys.exit()
+
+class Dir_Index(QThread):
+    update_progress = pyqtSignal(int)
+    def __init__(self, Path, parent=None):
+        QThread.__init__(self, parent)
+        self.Path = Path
+    def start(self):
+        QThread.start(self)
+    def run(self):
+        try:
+            i = 0
+            for root, dirs, files in os.walk(str(self.Path)):
+                for name in files:
+                    with open('./lib/db') as myfile:
+                        if str(os.path.join(root,name)) in myfile.read():
+                            print("Track already added") 
+                            i += 1
+                            print(f"{i} process complete ... {str(os.path.join(root,name))} already in DB")
+                            self.update_progress.emit(i)   
+                        else:    
+                            os.system(f"cd lib && ./musicID index {os.path.join(root,name)} >> db")
+                            i += 1
+                            print(f"{i} process complete")
+                            self.update_progress.emit(i)
+        except:
+            print("error in Dir_index class")
 
 class RecClass(QThread):
     def run(self):
