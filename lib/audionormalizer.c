@@ -1,5 +1,5 @@
 #include <math.h>
-#include "audionormalizer.h"
+#include "headers/audionormalizer.h"
 
 
 void normalize(float* samples, unsigned int size) {

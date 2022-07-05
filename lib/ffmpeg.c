@@ -3,7 +3,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include "ffmpeg.h"
+#include "headers/ffmpeg.h"
 
 
 static void parse_metadata(char* metadata, char* *artist, char* *track_title, char* *album_title) {

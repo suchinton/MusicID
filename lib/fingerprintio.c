@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "fingerprintio.h"
+#include "headers/fingerprintio.h"
 
 
 static void free_index_entry(struct index_entry* entry);

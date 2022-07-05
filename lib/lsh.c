@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "lsh.h"
+#include "headers/lsh.h"
 
 
 void free_signature_list(struct signature_list* list) {

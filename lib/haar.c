@@ -2,7 +2,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "haar.h"
+#include "headers/haar.h"
 
 #define N_THREADS 8
 

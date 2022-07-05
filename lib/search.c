@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
-#include "lsh.h"
-#include "search.h"
+#include "headers/lsh.h"
+#include "headers/search.h"
 
 
 // Checking hashes by buckets of 4 bytes is meant to

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include "fft.h"
+#include "headers/fft.h"
 
 static uint16_t reversed[2048] = { 0xFFFF };
 

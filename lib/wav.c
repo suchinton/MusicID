@@ -2,9 +2,9 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include "audionormalizer.h"
-#include "resample.h"
-#include "wav.h"
+#include "headers/audionormalizer.h"
+#include "headers/resample.h"
+#include "headers/wav.h"
 
 
 // Uncompressed integer PCM

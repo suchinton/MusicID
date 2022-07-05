@@ -1,6 +1,6 @@
 #include <stdlib.h>
-#include "minhash.h"
-#include "permutations.h"
+#include "headers/minhash.h"
+#include "headers/permutations.h"
 
 
 /**

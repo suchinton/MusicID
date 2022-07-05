@@ -263,6 +263,13 @@ class SearchClass(QThread):
 
 # init the app
 if __name__ == '__main__':
+
+    if os.path.exists("./lib/musicID"):
+        print("no need to make file again")
+    else:
+        os.system("cd lib && make")
+        os.system("bash install_dependencies.sh")
+
     app = QApplication(sys.argv)
     Main_pg = MainWindow()
     sys.exit(app.exec())

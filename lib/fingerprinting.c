@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "fingerprinting.h"
-#include "haar.h"
-#include "minhash.h"
-#include "rawfingerprints.h"
-#include "spectralimages.h"
-#include "wav.h"
+#include "headers/fingerprinting.h"
+#include "headers/haar.h"
+#include "headers/minhash.h"
+#include "headers/rawfingerprints.h"
+#include "headers/spectralimages.h"
+#include "headers/wav.h"
 
 int generate_fingerprint(const char* wav, struct signatures* *fingerprint,
                             char* *artist, char* *track_title, char* *album_title) {
-    // Let's make sure we have a wave file we can read
+    //  making sure we have a wave file we can read
     struct wav_reader* reader;
     int res = new_wav_reader(wav, &reader);
     if (res != SUCCESS) {
@@ -26,7 +26,7 @@ int generate_fingerprint(const char* wav, struct signatures* *fingerprint,
         fprintf(stderr, "Album title: %s\n", reader->album_title);
     }
 
-    // Let's steal the metadata from the wav reader
+    // extracting the metadata from the wav reader
     if (artist != NULL) *artist = reader->artist;
     if (track_title != NULL) *track_title = reader->track_title;
     if (album_title != NULL) *album_title = reader->album_title;
@@ -34,7 +34,7 @@ int generate_fingerprint(const char* wav, struct signatures* *fingerprint,
     reader->track_title = NULL;
     reader->album_title = NULL;
 
-    // Let's downsample the file into 5512Hz mono float samples between -1.0 and 1.0
+    // downsampling the file into 5512Hz mono float samples between -1.0 and 1.0
     float* samples;
     int n = read_samples(reader, &samples);
     free_wav_reader(reader);

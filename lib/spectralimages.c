@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "fft.h"
-#include "hannwindow.h"
-#include "spectralimages.h"
+#include "headers/fft.h"
+#include "headers/hannwindow.h"
+#include "headers/spectralimages.h"
 
 
 #define N_THREADS 8

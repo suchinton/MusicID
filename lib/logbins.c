@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
-#include "logbins.h"
+#include "headers/logbins.h"
 
 #define MINIMUM_FREQUENCY 318
 #define MAXIMUM_FREQUENCY 2000

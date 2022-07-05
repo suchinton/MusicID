@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "permutations.h"
+#include "headers/permutations.h"
 
 // A very important part of the audiofingerprinting process is the MinHash algorithm
 // used to shorten the many signatures generated for each audio input. This process

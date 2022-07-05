@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "resample.h"
+#include "headers/resample.h"
 
 
 #define FILTER_SIZE 31

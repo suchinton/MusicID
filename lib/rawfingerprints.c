@@ -2,7 +2,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "rawfingerprints.h"
+#include "headers/rawfingerprints.h"
 
 
 #define N_THREADS 8

@@ -3,11 +3,11 @@
 #include <string.h>
 #include <sys/time.h>
 
-#include "ffmpeg.h"
-#include "fingerprinting.h"
-#include "fingerprintio.h"
-#include "lsh.h"
-#include "search.h"
+#include "headers/ffmpeg.h"
+#include "headers/fingerprinting.h"
+#include "headers/fingerprintio.h"
+#include "headers/lsh.h"
+#include "headers/search.h"
 
 static long time_in_milliseconds() {
     struct timeval tv;
