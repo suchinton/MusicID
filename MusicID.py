@@ -64,10 +64,15 @@ class MainWindow(QMainWindow):
         self.Submit.clicked.connect(self.Index_refresh)
         self.Recommend.doubleClicked.connect(self.OpenLink)
         self.SideBarButton.clicked.connect(self.dockWidget.show)
-        self.T_UpdateList()
         self.dockWidget.hide()
         self.Message.hide()
         self.progressBar.hide()
+
+        try:
+            self.T_UpdateList()
+        except:
+            FileNotFoundError
+
         # Show App
         self.show()
     
@@ -207,19 +212,20 @@ class MainWindow(QMainWindow):
         t3.start()
 
     def UpdateList(self):
+        try:
+            Database = open('./lib/db', 'r')
 
-        Database = open('./lib/db', 'r')
+            home = str(subprocess.getoutput("echo $HOME"))
+            L = []
 
-        home = str(subprocess.getoutput("echo $HOME"))
-        L = []
+            for line in Database:
+                if home in line:
+                    L.append(line.replace(subprocess.getoutput("echo $HOME/"),"~/"))
 
-        for line in Database:
-            if home in line:
-                L.append(line.replace(subprocess.getoutput("echo $HOME/"),"~/"))
-
-        self.SongsList.addItems(L)
-        Database.close()
-        sys.exit()
+            self.SongsList.addItems(L)
+            Database.close()
+        except:
+            FileNotFoundError
 
 class Dir_Index(QThread):
     update_progress = pyqtSignal(int)
@@ -269,6 +275,12 @@ if __name__ == '__main__':
     else:
         os.system("cd lib && make")
         os.system("bash install_dependencies.sh")
+
+    if os.path.exists("./lib/db"):
+        print("DB Loaded...")
+    else:
+        print("DB doesn't exist... creating file now")
+        os.system("touch ./lib/db")
 
     app = QApplication(sys.argv)
     Main_pg = MainWindow()
