@@ -486,6 +486,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QTableWidget" name="Recommend">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
            <property name="showGrid">
             <bool>true</bool>
            </property>

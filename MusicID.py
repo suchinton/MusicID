@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit,\
 from PyQt5.QtCore import *
 from PyQt5 import QtWidgets 
 from PyQt5 import uic
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QPainter, QPainterPath
 import sys
 import os
 import Recorder
@@ -171,8 +171,15 @@ class MainWindow(QMainWindow):
             if os.path.exists(self.path):
                 print("2)" + self.path)
                 os.system(f"ffmpeg -i '{self.path}' Cover.png")
-                self.img = QPixmap("Cover.png")
+                self.imagePath = "Cover.png"
+                self.img = self.circleImage()
+                #self.img = QPixmap("Cover.png")
                 self.Album_Art.setPixmap(self.img)
+                #self.Album_Art.setStyleSheet("border :3px solid blue;"
+                #    "border-top-left-radius :35px;"
+                #    "border-top-right-radius : 20px; "
+                #    "border-bottom-left-radius : 50px; "
+                #    "border-bottom-right-radius : 10px")
             else:
                 self.img = QPixmap("Default.png")
                 self.Album_Art.setPixmap(self.img)
@@ -241,6 +248,26 @@ class MainWindow(QMainWindow):
             Database.close()
         except:
             FileNotFoundError
+
+    def circleImage(self):
+        source = QPixmap(self.imagePath)
+        size = min(source.width(), source.height())
+
+        target = QPixmap(size, size)
+        target.fill(Qt.transparent)
+
+        qp = QPainter(target)
+        qp.setRenderHints(qp.Antialiasing)
+        path = QPainterPath()
+        path.addEllipse(0, 0, size, size)
+        qp.setClipPath(path)
+
+        sourceRect = QRect(0, 0, size, size)
+        sourceRect.moveCenter(source.rect().center())
+        qp.drawPixmap(target.rect(), source, sourceRect)
+        qp.end()
+
+        return target
 
 class Dir_Index(QThread):
     update_progress = pyqtSignal(int)
