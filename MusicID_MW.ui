@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>805</width>
+    <width>788</width>
     <height>565</height>
    </rect>
   </property>
@@ -327,43 +327,6 @@
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="1" column="2">
-          <widget class="QPlainTextEdit" name="Status">
-           <property name="maximumSize">
-            <size>
-             <width>2220</width>
-             <height>200</height>
-            </size>
-           </property>
-           <property name="acceptDrops">
-            <bool>false</bool>
-           </property>
-           <property name="autoFillBackground">
-            <bool>true</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Sunken</enum>
-           </property>
-           <property name="sizeAdjustPolicy">
-            <enum>QAbstractScrollArea::AdjustToContents</enum>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="overwriteMode">
-            <bool>false</bool>
-           </property>
-           <property name="backgroundVisible">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="0">
           <widget class="QLabel" name="Album_Art">
            <property name="maximumSize">
@@ -404,15 +367,41 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="0" colspan="3">
-          <widget class="QLabel" name="Album">
+         <item row="4" column="0" colspan="3">
+          <widget class="QLabel" name="Track">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0" colspan="3">
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Preferred</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="3" column="0" colspan="3">
+          <widget class="QLabel" name="Artist">
            <property name="text">
             <string/>
            </property>
           </widget>
          </item>
-         <item row="3" column="0" colspan="3">
-          <widget class="QLabel" name="Artist">
+         <item row="5" column="0" colspan="3">
+          <widget class="QLabel" name="Album">
            <property name="text">
             <string/>
            </property>
@@ -437,31 +426,55 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="0" colspan="3">
-          <widget class="QLabel" name="Track">
-           <property name="text">
-            <string/>
+         <item row="1" column="2">
+          <widget class="QPlainTextEdit" name="Status">
+           <property name="maximumSize">
+            <size>
+             <width>2220</width>
+             <height>200</height>
+            </size>
            </property>
-           <property name="scaledContents">
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="autoFillBackground">
             <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Sunken</enum>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustToContents</enum>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="overwriteMode">
+            <bool>false</bool>
+           </property>
+           <property name="backgroundVisible">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="6" column="0" colspan="3">
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
+          <widget class="QLabel" name="Location">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;click to open file in prefferd application&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
+           <property name="text">
+            <string/>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
+           <property name="openExternalLinks">
+            <bool>true</bool>
            </property>
-          </spacer>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -583,7 +596,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>805</width>
+     <width>788</width>
      <height>27</height>
     </rect>
    </property>

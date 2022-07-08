@@ -42,6 +42,7 @@ class MainWindow(QMainWindow):
 
         self.Album_Art = self.findChild(QLabel,"Album_Art")
         self.Status = self.findChild(QPlainTextEdit,"Status")
+        self.Location = self.findChild(QLabel,"Location")
         self.Artist = self.findChild(QLabel,"Artist")
         self.Track = self.findChild(QLabel,"Track")
         self.Album = self.findChild(QLabel,"Album")
@@ -66,6 +67,7 @@ class MainWindow(QMainWindow):
         self.Submit.clicked.connect(self.Index_refresh)
         self.Recommend.doubleClicked.connect(self.OpenLink)
         self.SideBarButton.clicked.connect(self.dockWidget.show)
+
         self.dockWidget.hide()
         self.Message.hide()
         self.progressBar.hide()
@@ -164,25 +166,19 @@ class MainWindow(QMainWindow):
             if 'No match found' in self.info:
                 QMessageBox.warning(self,"No Match","No Match was found for the Track, please try again or add song to databse")
 
-            #print(str(subprocess.getoutput("cat Status.txt  | grep /")).replace('Found match: ',''))
-
-            self.path = str(subprocess.getoutput("cat Status.txt  | grep $HOME ")).replace('Found match: ','').replace("'","")
-            print("1)" + self.path)
-            if os.path.exists(self.path):
-                print("2)" + self.path)
-                os.system(f"ffmpeg -i '{self.path}' Cover.png")
+            self.path_to_file = str(subprocess.getoutput("cat Status.txt  | grep $HOME ")).replace('Found match: ','').replace("'","")
+            
+            if os.path.exists(self.path_to_file):
+                os.system(f"ffmpeg -i '{self.path_to_file}' Cover.png")
+                #
                 self.imagePath = "Cover.png"
                 self.img = self.circleImage()
-                #self.img = QPixmap("Cover.png")
                 self.Album_Art.setPixmap(self.img)
-                #self.Album_Art.setStyleSheet("border :3px solid blue;"
-                #    "border-top-left-radius :35px;"
-                #    "border-top-right-radius : 20px; "
-                #    "border-bottom-left-radius : 50px; "
-                #    "border-bottom-right-radius : 10px")
+                self.Location.setText("Path : " + self.path_to_file)
             else:
                 self.img = QPixmap("Default.png")
                 self.Album_Art.setPixmap(self.img)
+                self.Location.setText("")
 
             self.Status.setPlaceholderText(self.info)
             self.Artist.setText(subprocess.getoutput("cat Status.txt | grep Artist"))
@@ -323,6 +319,9 @@ if __name__ == '__main__':
     else:
         print("DB doesn't exist... creating file now")
         os.system("touch ./lib/db")
+
+    if os.path.exists("Cover.png"):
+        os.system("rm Cover.png")
 
     app = QApplication(sys.argv)
     Main_pg = MainWindow()
