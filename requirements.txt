@@ -1,3 +1,4 @@
+
 PyQt5              >= 5.15.7
 PyQt5-sip          >= 12.11.0
 PyQt5-stubs        >= 5.15.6.0
@@ -6,4 +7,4 @@ PyQtWebEngine-Qt5  >= 5.15.2
 PyAudio            >= 0.2.11
 Wave               >= 0.0.2
 spotipy            >= 2.20.0
-QtGui
+QtGui               

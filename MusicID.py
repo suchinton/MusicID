@@ -174,7 +174,7 @@ class MainWindow(QMainWindow):
                 self.imagePath = "Cover.png"
                 self.img = self.circleImage()
                 self.Album_Art.setPixmap(self.img)
-                self.Location.setText("Path : " + self.path_to_file)
+                self.Location.setText('<a href='+self.path_to_file+'>Open Track in Default Player</a>')
             else:
                 self.img = QPixmap("Default.png")
                 self.Album_Art.setPixmap(self.img)
