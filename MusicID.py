@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit,\
 from PyQt5.QtCore import *
 from PyQt5 import QtWidgets 
 from PyQt5 import uic
-from PyQt5.QtGui import QPixmap, QPainter, QPainterPath
+from PyQt5.QtGui import QPixmap, QPainter, QPainterPath, QMovie
 import sys
 import os
 import Recorder
@@ -27,6 +27,7 @@ class MainWindow(QMainWindow):
         # Define Widgets
 
         ## for main tab
+        self.Loading = self.findChild(QLabel,"Loading")
         self.Listen = self.findChild(QPushButton, "ListenButton")
 
         self.Search_by_T = self.findChild(QLineEdit,"Search_by_T")
@@ -136,6 +137,9 @@ class MainWindow(QMainWindow):
 
     def SearchDB_1(self):           ## step 1 in searching db- record output.wav
         self.Listen.setEnabled(False)
+        self.animation = QMovie("mic.gif")
+        self.Loading.setMovie(self.animation)
+        self.animation.start()
         self.Listen.setText("Listening...")
         self.T_RecClass()
 
@@ -156,7 +160,8 @@ class MainWindow(QMainWindow):
     def SearchDB_3(self):                    ## step 3 in calling QThread for Searching
         self.Listen.setText("Listen")
         self.Listen.setEnabled(True)
-
+        self.animation.stop()
+        self.Loading.setPixmap(QPixmap("mic.gif"))
         self.Tabs.setCurrentIndex(1)
         
         try:
@@ -170,11 +175,9 @@ class MainWindow(QMainWindow):
             
             if os.path.exists(self.path_to_file):
                 os.system(f"ffmpeg -i '{self.path_to_file}' Cover.png")
-                #
-                self.imagePath = "Cover.png"
-                self.img = self.circleImage()
+                self.img = self.circleImage("Cover.png")
                 self.Album_Art.setPixmap(self.img)
-                self.Location.setText('<a href='+self.path_to_file+'>Open Track in Default Player</a>')
+                self.Location.setText('<a href='+self.path_to_file+'>Location: '+self.path_to_file+'</a>')
             else:
                 self.img = QPixmap("Default.png")
                 self.Album_Art.setPixmap(self.img)
@@ -186,12 +189,13 @@ class MainWindow(QMainWindow):
             self.Album.setText(subprocess.getoutput("cat Status.txt | grep Album"))
 
             self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
+            self.updateRecomendations()
+
             self.text_file.close()
             os.system("rm Status.txt")
             os.system("rm output.wav")
             os.system("rm Cover.png")
             os.system("rm db")
-            self.updateRecomendations()
         except:
             FileNotFoundError
     
@@ -245,8 +249,8 @@ class MainWindow(QMainWindow):
         except:
             FileNotFoundError
 
-    def circleImage(self):
-        source = QPixmap(self.imagePath)
+    def circleImage(self,Img):
+        source = QPixmap(Img)
         size = min(source.width(), source.height())
 
         target = QPixmap(size, size)
