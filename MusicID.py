@@ -11,6 +11,7 @@ import os
 import Recorder
 from threading import *
 from PyQt5.QtWebEngineWidgets import QWebEngineView
+import notify2
 
 from spotiFind import Spoti_Find
 
@@ -169,33 +170,58 @@ class MainWindow(QMainWindow):
             self.info = self.text_file.read()
 
             if 'No match found' in self.info:
-                QMessageBox.warning(self,"No Match","No Match was found for the Track, please try again or add song to databse")
-
-            self.path_to_file = str(subprocess.getoutput("cat Status.txt  | grep $HOME ")).replace('Found match: ','').replace("'","")
-            
-            if os.path.exists(self.path_to_file):
-                os.system(f"ffmpeg -i '{self.path_to_file}' Cover.png")
-                self.img = self.circleImage("Cover.png")
-                self.Album_Art.setPixmap(self.img)
-                self.Location.setText('<a href='+self.path_to_file+'>Location: '+self.path_to_file+'</a>')
-            else:
+                self.Status.setPlaceholderText(self.info)
+                self.Artist.setText(subprocess.getoutput("cat Status.txt | grep Artist"))
+                self.Track.setText(subprocess.getoutput("cat Status.txt | grep Track"))
+                self.Album.setText(subprocess.getoutput("cat Status.txt | grep Album"))
                 self.img = QPixmap("Default.png")
                 self.Album_Art.setPixmap(self.img)
                 self.Location.setText("")
+                n = notify2.Notification(
+                     "No Match Found...",
+                     "Try re-indexing your Music Dir or Try again",
+                     icon= f"{os.getcwd()}/Default.png"
+                    )
+                n.show()
+                QMessageBox.warning(self,"No Match","No Match was found for the Track, please try again or add song to databse")
 
-            self.Status.setPlaceholderText(self.info)
-            self.Artist.setText(subprocess.getoutput("cat Status.txt | grep Artist"))
-            self.Track.setText(subprocess.getoutput("cat Status.txt | grep Track"))
-            self.Album.setText(subprocess.getoutput("cat Status.txt | grep Album"))
+            else:
+                self.path_to_file = str(subprocess.getoutput("cat Status.txt  | grep $HOME ")).replace('Found match: ','').replace("'","")
+                self.Status.setPlaceholderText(self.info)
+                self.Artist.setText(subprocess.getoutput("cat Status.txt | grep Artist"))
+                self.Track.setText(subprocess.getoutput("cat Status.txt | grep Track"))
+                self.Album.setText(subprocess.getoutput("cat Status.txt | grep Album"))
 
-            self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
-            self.updateRecomendations()
+                if os.path.exists(self.path_to_file):
+                    os.system(f"ffmpeg -i '{self.path_to_file}' Cover.png")
+                    self.img = self.circleImage("Cover.png")
+                    self.Album_Art.setPixmap(self.img)
+                    self.Location.setText('<a href='+self.path_to_file+'>Location: '+self.path_to_file+'</a>')
+                    n = notify2.Notification(
+                         "Match Found!",
+                         f"{self.Artist.text()} \n {self.Track.text()}",
+                         icon= f"{os.getcwd()}/Cover.png"
+                        )
+                else:
+                    self.img = QPixmap("Default.png")
+                    self.Album_Art.setPixmap(self.img)
+                    self.Location.setText("")
+                    n = notify2.Notification(
+                         "Match Found!",
+                         f"{self.Artist.text()} \n {self.Track.text()}",
+                         icon= f"{os.getcwd()}/Default.png"
+                        )
 
-            self.text_file.close()
-            os.system("rm Status.txt")
-            os.system("rm output.wav")
-            os.system("rm Cover.png")
-            os.system("rm db")
+                n.show()
+
+                self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
+                self.updateRecomendations()
+
+                self.text_file.close()
+                os.system("rm Status.txt")
+                os.system("rm output.wav")
+                os.system("rm Cover.png")
+                os.system("rm db")
         except:
             FileNotFoundError
     
@@ -327,6 +353,8 @@ if __name__ == '__main__':
     if os.path.exists("Cover.png"):
         os.system("rm Cover.png")
 
+    notify2.init('MusicID')
+    
     app = QApplication(sys.argv)
     Main_pg = MainWindow()
     sys.exit(app.exec())
