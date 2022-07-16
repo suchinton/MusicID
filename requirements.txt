@@ -7,4 +7,5 @@ PyQtWebEngine-Qt5  >= 5.15.2
 PyAudio            >= 0.2.11
 Wave               >= 0.0.2
 spotipy            >= 2.20.0
+notify2
 QtGui               
