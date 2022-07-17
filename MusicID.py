@@ -138,7 +138,7 @@ class MainWindow(QMainWindow):
 
     def SearchDB_1(self):           ## step 1 in searching db- record output.wav
         self.Listen.setEnabled(False)
-        self.animation = QMovie("mic.gif")
+        self.animation = QMovie("./res/mic.gif")
         self.Loading.setMovie(self.animation)
         self.animation.start()
         self.Listen.setText("Listening...")
@@ -162,7 +162,7 @@ class MainWindow(QMainWindow):
         self.Listen.setText("Listen")
         self.Listen.setEnabled(True)
         self.animation.stop()
-        self.Loading.setPixmap(QPixmap("mic.gif"))
+        self.Loading.setPixmap(QPixmap("./res/mic.gif"))
         self.Tabs.setCurrentIndex(1)
         
         self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
@@ -177,13 +177,13 @@ class MainWindow(QMainWindow):
                 self.Artist.setText(subprocess.getoutput("cat Status.txt | grep Artist"))
                 self.Track.setText(subprocess.getoutput("cat Status.txt | grep Track"))
                 self.Album.setText(subprocess.getoutput("cat Status.txt | grep Album"))
-                self.img = QPixmap("Default.png")
+                self.img = QPixmap("./res/Default.png")
                 self.Album_Art.setPixmap(self.img)
                 self.Location.setText("")
                 n = notify2.Notification(
                      "No Match Found...",
                      "Try re-indexing your Music Dir or Try again",
-                     icon= f"{os.getcwd()}/Default.png"
+                     icon= f"{os.getcwd()}/res/Default.png"
                     )
                 n.show()
                 QMessageBox.warning(self,"No Match","No Match was found for the Track, please try again or add song to databse")
@@ -207,13 +207,13 @@ class MainWindow(QMainWindow):
                         )
                            
                 else:
-                    self.img = QPixmap("Default.png")
+                    self.img = QPixmap("./res/Default.png")
                     self.Album_Art.setPixmap(self.img)
                     self.Location.setText("")
                     n = notify2.Notification(
                          "Match Found!",
                          f"{self.Artist.text()} \n {self.Track.text()}",
-                         icon= f"{os.getcwd()}/Default.png"
+                         icon= f"{os.getcwd()}/res/Default.png"
                         )
 
                 n.show()

@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>App_icon.svg</normaloff>App_icon.svg</iconset>
+    <normaloff>res/voice.png</normaloff>res/voice.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -310,7 +310,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>mic.gif</pixmap>
+            <pixmap>res/mic.gif</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -660,7 +660,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>App_icon.svg</pixmap>
+       <pixmap>res/voice.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
