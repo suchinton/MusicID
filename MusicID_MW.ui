@@ -12,14 +12,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>750</width>
-    <height>500</height>
+    <width>825</width>
+    <height>565</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1050</width>
-    <height>700</height>
+    <width>825</width>
+    <height>565</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,6 +28,12 @@
   <property name="windowIcon">
    <iconset>
     <normaloff>App_icon.svg</normaloff>App_icon.svg</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="layoutDirection">
@@ -50,6 +56,9 @@
         <family>JetBrainsMono Nerd Font</family>
        </font>
       </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -61,6 +70,9 @@
     </item>
     <item row="2" column="4">
      <widget class="QLineEdit" name="Search_by_T">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <property name="placeholderText">
        <string>Search by track title</string>
       </property>
@@ -70,6 +82,9 @@
      <widget class="QToolButton" name="SideBarButton">
       <property name="toolTip">
        <string>Show Songs in Data-Base</string>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
       </property>
       <property name="text">
        <string></string>
@@ -482,7 +497,7 @@
             <bool>false</bool>
            </property>
            <property name="autoFillBackground">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="styleSheet">
             <string notr="true"/>
@@ -711,6 +726,8 @@
    <header location="global">QtWebEngineWidgets/QWebEngineView</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="h.qrc"/>
+ </resources>
  <connections/>
 </ui>

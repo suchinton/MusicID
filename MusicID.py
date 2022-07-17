@@ -165,6 +165,9 @@ class MainWindow(QMainWindow):
         self.Loading.setPixmap(QPixmap("mic.gif"))
         self.Tabs.setCurrentIndex(1)
         
+        self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
+        self.updateRecomendations()
+        
         try:
             self.text_file = open("Status.txt", "r")
             self.info = self.text_file.read()
@@ -202,6 +205,7 @@ class MainWindow(QMainWindow):
                          f"{self.Artist.text()} \n {self.Track.text()}",
                          icon= f"{os.getcwd()}/Cover.png"
                         )
+                           
                 else:
                     self.img = QPixmap("Default.png")
                     self.Album_Art.setPixmap(self.img)
@@ -213,9 +217,6 @@ class MainWindow(QMainWindow):
                         )
 
                 n.show()
-
-                self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
-                self.updateRecomendations()
 
                 self.text_file.close()
                 os.system("rm Status.txt")
