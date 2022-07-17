@@ -165,9 +165,6 @@ class MainWindow(QMainWindow):
         self.Loading.setPixmap(QPixmap("./res/mic.gif"))
         self.Tabs.setCurrentIndex(1)
         
-        self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
-        self.updateRecomendations()
-        
         try:
             self.text_file = open("Status.txt", "r")
             self.info = self.text_file.read()
@@ -216,6 +213,8 @@ class MainWindow(QMainWindow):
                          icon= f"{os.getcwd()}/res/Default.png"
                         )
 
+                self.track_result = Spoti_Find(str(self.Track.text()).replace('Track title: ',''))
+                self.updateRecomendations()
                 n.show()
 
                 self.text_file.close()

@@ -712,7 +712,20 @@
        </widget>
       </item>
       <item>
-       <widget class="QListWidget" name="SongsList"/>
+       <widget class="QListWidget" name="SongsList">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="resizeMode">
+         <enum>QListView::Adjust</enum>
+        </property>
+        <property name="layoutMode">
+         <enum>QListView::Batched</enum>
+        </property>
+        <property name="viewMode">
+         <enum>QListView::ListMode</enum>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -726,8 +739,6 @@
    <header location="global">QtWebEngineWidgets/QWebEngineView</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="h.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
