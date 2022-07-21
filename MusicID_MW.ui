@@ -635,7 +635,7 @@
            </property>
            <property name="url">
             <url>
-             <string>https://www.spotify.com/in-en/</string>
+             <string>https://open.spotify.com/</string>
             </url>
            </property>
            <property name="zoomFactor">
