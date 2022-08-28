@@ -1,9 +1,9 @@
 
-PyQt5              
-PyQt5-sip          
-PyQt5-stubs        
-PyQtWebEngine      
-PyQtWebEngine-Qt5  
+#PyQt5              
+#PyQt5-sip          
+#PyQt5-stubs        
+#PyQtWebEngine      
+#PyQtWebEngine-Qt5  
 PyAudio            
 Wave               
 spotipy            
